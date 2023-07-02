@@ -275,8 +275,8 @@ std::vector<std::string> getFallbackFontPaths()
 	std::vector<std::string> fallbackFonts = 
 	{
 		":/fontawesome-webfont.ttf",
-		":/DroidSansFallbackFull.ttf",// japanese, chinese, present on Debian
-		":/NanumMyeongjo.ttf", // korean font		
+		":/DroidSansFallback.ttf",// korean, japanese, chinese, present on Debian
+		":/NanumGothic.ttf", // korean font		
 		":/Cairo.ttf", // arabic
 		":/Rubik-Regular.ttf" // hebrew (https://fontmeme.com/polices/police-rubik-hebrew public domain)
 	};
