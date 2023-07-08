@@ -10,8 +10,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.3.2\n"
 
 msgid "UPDATE AVAILABLE"
 msgstr "업데이트 이용가능"
@@ -20,13 +20,13 @@ msgid "Name"
 msgstr "이름"
 
 msgid "this game's name"
-msgstr ""
+msgstr "현재 게임의 이름"
 
 msgid "Description"
 msgstr "설명"
 
 msgid "this game's description"
-msgstr ""
+msgstr "현재 게임의 설명"
 
 msgid "Emulator"
 msgstr "에뮬레이터"
@@ -119,10 +119,10 @@ msgid "enter path to wheel"
 msgstr "휠 경로 입력"
 
 msgid "Mix"
-msgstr "혼합"
+msgstr "믹스"
 
 msgid "enter path to mix"
-msgstr "혼합 경로 입력"
+msgstr "믹스 경로 입력"
 
 msgid "Rating"
 msgstr "평점"
@@ -140,13 +140,13 @@ msgid "Developer"
 msgstr "개발사"
 
 msgid "this game's developer"
-msgstr ""
+msgstr "현재 게임의 개발사"
 
 msgid "Publisher"
 msgstr "공급사"
 
 msgid "this game's publisher"
-msgstr ""
+msgstr "현재 게임의 공급사"
 
 msgid "Genre"
 msgstr "장르"
@@ -158,7 +158,7 @@ msgid "Game family"
 msgstr "게임 패밀리"
 
 msgid "this game's game family"
-msgstr ""
+msgstr "현재 게임의 게임 패밀리"
 
 msgid "Genres"
 msgstr "장르"
@@ -170,13 +170,13 @@ msgid "Arcade system"
 msgstr "아케이드 시스템"
 
 msgid "this game's arcade system"
-msgstr ""
+msgstr "현재 게임의 아케이드 시스템"
 
 msgid "Players"
-msgstr "플레이어"
+msgstr "인원 수"
 
 msgid "this game's number of players"
-msgstr ""
+msgstr "현재 게임의 인원 수"
 
 msgid "Favorite"
 msgstr "즐겨찾기"
@@ -230,13 +230,13 @@ msgid "Languages"
 msgstr "언어"
 
 msgid "this game's languages"
-msgstr ""
+msgstr "현재 게임의 언어"
 
 msgid "Region"
 msgstr "지역"
 
 msgid "this game's region"
-msgstr ""
+msgstr "현재 게임의 지역"
 
 msgid "Cheevos Hash"
 msgstr "Cheevos 해시"
@@ -289,7 +289,7 @@ msgstr "'%s'를 '%s'에 추가함"
 
 #, c-format
 msgid "Removed '%s' from '%s'"
-msgstr "'%s'에서 '%s'를 제거함"
+msgstr "'%s'를 '%s'에서 제거함"
 
 msgid "This collection is empty."
 msgstr "현재 컬렉션은 비어 있습니다."
@@ -304,7 +304,7 @@ msgstr "다수"
 #, c-format
 msgid "This collection contains %i game:%s"
 msgid_plural "This collection contains %i games, including:%s"
-msgstr[0] ""
+msgstr[0] "현재 컬렉션에는 %i 게임이 있습니다. 포함 게임:%s"
 
 msgid "SCANNING BLUETOOTH"
 msgstr "블루투스 검색"
@@ -316,16 +316,16 @@ msgid "BLUETOOTH SCAN IS ALREADY RUNNING."
 msgstr "블루투스 검색이 이미 실행중입니다."
 
 msgid "FORMATTING DEVICE"
-msgstr ""
+msgstr "포맷팅 디바이스"
 
 msgid "Formatting"
-msgstr ""
+msgstr "포맷팅"
 
 msgid "A REBOOT IS REQUIRED TO COMPLETE THE OPERATION"
 msgstr "작업을 완료하려면 시스템 재시작이 필요합니다"
 
 msgid "A DRIVE IS ALREADY BEING FORMATTED."
-msgstr ""
+msgstr "드라이브가 이미 포맷되어 있습니다."
 
 msgid "DOWNLOADING"
 msgstr "다운로드 중"
@@ -352,7 +352,7 @@ msgid "PACKAGE REMOVED SUCCESSFULLY"
 msgstr "패키지가 성공적으로 제거됨"
 
 msgid "FILTER GAMELIST BY"
-msgstr "게임 목록 필터 :"
+msgstr "게임리스트 필터 :"
 
 msgid "EDIT DYNAMIC COLLECTION FILTERS"
 msgstr "다이나믹 컬렉션 필터 편집"
@@ -367,7 +367,7 @@ msgid "FIND GAMES"
 msgstr "게임 찾기"
 
 msgid "Unknown"
-msgstr "알 수 없음"
+msgstr "미확인"
 
 msgid "YES"
 msgstr "예"
@@ -439,7 +439,7 @@ msgid "RESTORE LAST SELECTED"
 msgstr "최근 선택 복구"
 
 msgid "START ON GAMELIST"
-msgstr "시작 게임 목록"
+msgstr "게임리스트에서 시작"
 
 msgid "GROUP UNTHEMED CUSTOM COLLECTIONS"
 msgstr "테마가 없는 커스텀 컬렉션을 그룹"
@@ -451,7 +451,7 @@ msgid "SHOW GAMES OF HIDDEN SYSTEMS IN COLLECTIONS"
 msgstr "컬렉셔이 숨겨진 시스템 게임 표시"
 
 msgid "UPDATE GAMELISTS"
-msgstr ""
+msgstr "게임리스트 업데이트"
 
 msgid "Loading..."
 msgstr "불러오는 중..."
@@ -463,7 +463,7 @@ msgid "AUTOMATIC COLLECTIONS"
 msgstr "자동 컬렉션"
 
 msgid "PER GENRE"
-msgstr "장르당"
+msgstr "장르별"
 
 msgid "ARCADE SYSTEMS"
 msgstr "아케이드 시스템"
@@ -485,7 +485,7 @@ msgstr "잠시만 기다려주세요"
 
 #, c-format
 msgid "%d%% (%d of %d)"
-msgstr "%d%% (%d of %d)"
+msgstr "%d%% (%d / %d)"
 
 msgid "RETROACHIEVEMENTS"
 msgstr "레트로 도전과제"
@@ -494,7 +494,7 @@ msgid "Points"
 msgstr "포인트"
 
 msgid "Rank"
-msgstr "랭크"
+msgstr "순위"
 
 msgid "VIEW DETAILS"
 msgstr "세부정보 보기"
@@ -518,10 +518,10 @@ msgid "NAVIGATION"
 msgstr "네비게이션"
 
 msgid "JUMP TO GAME BEGINNING WITH THE LETTER"
-msgstr ""
+msgstr "문자로 시작하는 게임으로 이동"
 
 msgid "SELECT RANDOM GAME"
-msgstr "무작위 게임 선택"
+msgstr "랜덤 게임 선택"
 
 msgid "SORT GAMES BY"
 msgstr "다음으로 게임 정렬"
@@ -536,13 +536,13 @@ msgid "DELETE COLLECTION"
 msgstr "컬렉션 삭제"
 
 msgid "GAMELIST VIEW STYLE"
-msgstr "게임 목록 정렬 방법"
+msgstr "게임리스트 정렬 방법"
 
 msgid "automatic"
 msgstr "자동"
 
 msgid "VIEW CUSTOMIZATION"
-msgstr ""
+msgstr "커스터마이징 보기"
 
 msgid "VIEW PAD TO KEYBOARD INFORMATION"
 msgstr "패드 키보드 변환 정보 보기"
@@ -557,13 +557,13 @@ msgid "FILTER GAMES BY TEXT"
 msgstr "텍스트로 게임 필터"
 
 msgid "THIS FUNCTION IS DISABLED WHILE THE SCRAPER IS RUNNING"
-msgstr ""
+msgstr "스크레퍼가 실행되는 동안에는 이 기능이 비활성화됩니다"
 
 msgid "CLOSE"
 msgstr "닫기"
 
 msgid "ARE YOU SURE YOU WANT TO DELETE THIS ITEM?"
-msgstr "정말로 현재 아이템을 삭제하시겠습니까?"
+msgstr "이 항목을 삭제하시겠습니까?"
 
 msgid "INPUT"
 msgstr "입력"
@@ -578,7 +578,7 @@ msgid "CONNECT TO NETPLAY"
 msgstr "넷플레이에 연결"
 
 msgid "Select a game lobby to join"
-msgstr ""
+msgstr "참가할 게임 로비 선택"
 
 msgid "REFRESH"
 msgstr "새로고침"
@@ -587,7 +587,7 @@ msgid "FAILED"
 msgstr "실패"
 
 msgid "UNKNOWN ROM VERSION"
-msgstr "알 수 없는 롬 버전"
+msgstr "미확인 롬버전"
 
 msgid "DIFFERENT ROM"
 msgstr "다른 롬"
@@ -605,7 +605,7 @@ msgid "UNAVAILABLE GAMES"
 msgstr "실행할 수 없는 게임"
 
 msgid "NO GAMES FOUND"
-msgstr ""
+msgstr "발견된 게임 없음"
 
 msgid "JOIN GAME"
 msgstr "게임 참가"
@@ -614,7 +614,7 @@ msgid "WATCH GAME"
 msgstr "게임 관전"
 
 msgid "INPUT MANUALLY"
-msgstr ""
+msgstr "수동 입력"
 
 msgid "NO WI-FI NETWORKS FOUND"
 msgstr "와이파이를 찾지 못했습니다"
@@ -641,7 +641,7 @@ msgid "RESET"
 msgstr "초기화"
 
 msgid "PARENT FOLDER"
-msgstr "부모 폴더"
+msgstr "상위 폴더"
 
 msgid "SCREENSHOTS FOLDER"
 msgstr "스크린샷 폴더"
@@ -656,13 +656,13 @@ msgid "CONTENT DOWNLOADER"
 msgstr "컨텐츠 다운로더"
 
 msgid "SELECT CONTENT TO INSTALL/REMOVE"
-msgstr ""
+msgstr "설치/제거할 컨텐츠를 선택하세요"
 
 msgid "UPDATE INSTALLED CONTENT"
 msgstr "설치된 컨텐츠 업데이트"
 
 msgid "No items"
-msgstr "현재 보기에 항목이 없습니다"
+msgstr "항목이 없습니다"
 
 msgid "MISC"
 msgstr "기타"
@@ -678,7 +678,7 @@ msgid "REMOVE"
 msgstr "제거"
 
 msgid "UNINSTALLATION ADDED TO QUEUE"
-msgstr ""
+msgstr "대기열에 제거가 추가됨"
 
 msgid "INSTALL"
 msgstr "설치"
@@ -688,7 +688,7 @@ msgid "CURRENTLY IN DOWNLOAD QUEUE"
 msgstr "현재 다운로드 대기열"
 
 msgid "NO MISSING BIOS FILES"
-msgstr ""
+msgstr "누락 바이오스 파일 없음"
 
 msgid "MISSING BIOS CHECK"
 msgstr "누락 바이오스"
@@ -703,7 +703,7 @@ msgid "black"
 msgstr "블랙"
 
 msgid "random video"
-msgstr "무작위 동영상"
+msgstr "랜덤 비디오"
 
 msgid "slideshow"
 msgstr "슬라이드쇼"
@@ -724,7 +724,7 @@ msgid "systems"
 msgstr "시스템"
 
 msgid "random"
-msgstr "무작위"
+msgstr "랜덤"
 
 msgid "SCREENSAVER SETTINGS"
 msgstr "화면보호기 설정"
@@ -742,10 +742,10 @@ msgid "STOP MUSIC ON SCREENSAVER"
 msgstr "화면 보호기 실행시 음악 중지"
 
 msgid "RANDOM VIDEO SCREENSAVER SETTINGS"
-msgstr "무작위 동영상 화면보호기 설정"
+msgstr "랜덤 동영상 화면보호기 설정"
 
 msgid "VIDEO DURATION (SECS)"
-msgstr ""
+msgstr "다음 시간 후 이미지 변경(초)"
 
 msgid "USE OMX PLAYER FOR SCREENSAVER"
 msgstr "화면보호기에 OMX 플레이어 사용"
@@ -757,28 +757,28 @@ msgid "USE MARQUEE AS GAME INFO"
 msgstr "게임 정보로 마키 사용"
 
 msgid "DECORATION SET USED"
-msgstr ""
+msgstr "데코레이션 세트 사용됨"
 
 msgid "STRETCH VIDEOS"
-msgstr ""
+msgstr "비디오 늘리기"
 
 msgid "MUTE VIDEO AUDIO"
-msgstr "동영상 음소거"
+msgstr "비디오 음소거"
 
 msgid "SCREENSAVER CONTROLS"
 msgstr "화면보호기 제어"
 
 msgid "USE CUSTOM VIDEOS"
-msgstr "사용자 동영상 사용"
+msgstr "사용자 비디오 사용"
 
 msgid "CUSTOM VIDEO DIRECTORY"
-msgstr "사용자 동영상 경로"
+msgstr "사용자 비디오 경로"
 
 msgid "USE VIDEOS IN SUBFOLDERS OF CUSTOM DIRECTORY"
-msgstr ""
+msgstr "사용자 경로 하위폴더에서 비디오 사용"
 
 msgid "CUSTOM VIDEO FILE EXTENSIONS"
-msgstr ""
+msgstr "사용자 비디오 파일 확장자"
 
 msgid "SLIDESHOW SCREENSAVER SETTINGS"
 msgstr "슬라이스쇼 화면보호기 설정"
@@ -796,10 +796,10 @@ msgid "CUSTOM IMAGE DIRECTORY"
 msgstr "사용자 이미지 경로"
 
 msgid "USE IMAGES IN SUBFOLDERS OF CUSTOM DIRECTORY"
-msgstr ""
+msgstr "사용자 경로 하위폴더에서 이미지 사용"
 
 msgid "CUSTOM IMAGE FILE EXTENSIONS"
-msgstr ""
+msgstr "사용자 이미지 파일 확장자"
 
 msgid "PAD TO KEYBOARD CONFIGURATION"
 msgstr "패드 키보드 변환 설정"
@@ -814,16 +814,16 @@ msgid "DELETE"
 msgstr "삭제"
 
 msgid "PLAYER 1"
-msgstr "플레이어 1"
+msgstr "사용자 1"
 
 msgid "PLAYER 2"
-msgstr "플레이어 2"
+msgstr "사용자 2"
 
 msgid "PLAYER 3"
-msgstr "플레이어 3"
+msgstr "사용자 3"
 
 msgid "PLAYER 4"
-msgstr "플레이어 4"
+msgstr "사용자 4"
 
 msgid "COMBINATIONS"
 msgstr "콤보"
@@ -873,6 +873,8 @@ msgid ""
 "YOU ARE CURRENTLY USING VERSION %s\n"
 "DO YOU WANT TO UPDATE TO VERSION %s?"
 msgstr ""
+"현재 %s 버전을 사용중입니다\n"
+"%s 버전으로 업데이트 하시겠습니까?"
 
 msgid "NETWORK CONNECTION NEEDED"
 msgstr "인터넷 연결이 필요합니다"
@@ -896,7 +898,7 @@ msgid "INVALID PARAMETERS"
 msgstr "매개변수가 잘못되었습니다"
 
 msgid "GAME MEDIA"
-msgstr ""
+msgstr "게임 미디어"
 
 msgid "VIEW GAME MANUAL"
 msgstr "게임 매뉴얼 보기"
@@ -908,31 +910,31 @@ msgid "VIEW GAME MAP"
 msgstr "게임 맵 보기"
 
 msgid "VIEW FULLSCREEN VIDEO"
-msgstr ""
+msgstr "게임 비디오 보기"
 
 msgid "VIEW GAME MEDIA"
-msgstr ""
+msgstr "게임 이미지 보기"
 
 msgid "CURRENT CORE IS NOT COMPATIBLE"
 msgstr "현재 코어가 호환 안됨"
 
 msgid "COMPATIBLE CORE(S)"
-msgstr ""
+msgstr "호환 코어"
 
 msgid "VIEW THIS GAME'S ACHIEVEMENTS"
-msgstr ""
+msgstr "현제 개임의 업적 보기"
 
 msgid "GAME"
 msgstr "게임"
 
 msgid "SAVE STATES"
-msgstr ""
+msgstr "상태 저장"
 
 msgid "OPEN"
 msgstr "열기"
 
 msgid "NETPLAY HOSTING/OPTIONS"
-msgstr ""
+msgstr "넷플레이 호스팅/옵션"
 
 msgid "NETPLAY"
 msgstr "넷플레이"
@@ -941,7 +943,7 @@ msgid "START GAME"
 msgstr "게임 실행"
 
 msgid "BEGIN HOSTING A NETPLAY SESSION"
-msgstr ""
+msgstr "넷플레이 세션 호스팅 시작하기"
 
 msgid "YOU ARE NOT CONNECTED TO A NETWORK"
 msgstr "네트워크에 접속중이 아닙니다"
@@ -950,13 +952,13 @@ msgid "PUBLICLY ANNOUNCE GAME"
 msgstr "공개 게임"
 
 msgid "SET PLAYER PASSWORD"
-msgstr "플레이어 비밀번호 설정"
+msgstr "사용자 비밀번호 설정"
 
 msgid "SET VIEWER PASSWORD"
 msgstr "관전자 비밀번호 설정"
 
 msgid "FIND SIMILAR GAMES..."
-msgstr "비슷한 게임 검색..."
+msgstr "유사 게임 검색..."
 
 msgid "DELETE ITEM"
 msgstr "아이템 삭제"
@@ -976,11 +978,11 @@ msgstr "컬렉션"
 
 #, c-format
 msgid "REMOVE FROM %s"
-msgstr "다음에서 제거됨 %s"
+msgstr "%s에서 제거"
 
 #, c-format
 msgid "ADD TO %s"
-msgstr "다음에 추가 %s"
+msgstr "%s에 추가"
 
 msgid "FAVORITES"
 msgstr "즐겨찾기"
@@ -992,10 +994,10 @@ msgid "SCRAPE"
 msgstr "스크랩"
 
 msgid "EDIT PADTOKEY PROFILE"
-msgstr ""
+msgstr "패드키 프로필 편집"
 
 msgid "CREATE PADTOKEY PROFILE"
-msgstr ""
+msgstr "패드키 프로필 만들기"
 
 msgid "ADVANCED GAME OPTIONS"
 msgstr "고급 게임 옵션"
@@ -1010,7 +1012,7 @@ msgid "THEMES DOWNLOADER"
 msgstr "테마 다운로더"
 
 msgid "SELECT THEMES TO INSTALL/REMOVE"
-msgstr ""
+msgstr "설치/제거할 테마 선택"
 
 #, c-format
 msgid "CURRENT THEME"
@@ -1030,7 +1032,7 @@ msgid "%d%% complete"
 msgstr "%d%% 완료"
 
 msgid "SAVE STATE MANAGER"
-msgstr ""
+msgstr "저장상태 관리자"
 
 msgid "START NEW GAME"
 msgstr "새 게임 시작"
@@ -1045,22 +1047,22 @@ msgid "SLOT"
 msgstr "슬롯"
 
 msgid "COPY TO FREE SLOT"
-msgstr "비어있는 슬롯에 복사"
+msgstr "빈 슬롯에 복사"
 
 msgid "SCRAPE CRITERIA"
-msgstr ""
+msgstr "스크랩 조건"
 
 msgid "MEDIA TO SCRAPE FOR"
-msgstr ""
+msgstr "스크랩할 미디어"
 
 msgid "ALL"
-msgstr ""
+msgstr "전부"
 
 msgid "ONLY MISSING"
-msgstr ""
+msgstr "누락된 미디어만"
 
 msgid "SYSTEMS INCLUDED"
-msgstr ""
+msgstr "시스템 포함"
 
 msgid "START"
 msgstr "시작"
@@ -1070,6 +1072,9 @@ msgid ""
 "MAY BE FOR DIFFERENT SYSTEMS!\n"
 "CONTINUE ANYWAY?"
 msgstr ""
+"경고: 선택한 시스템 중 일부에는 플랫폼 세트가 없습니다. 결과는 시스템에 따라 "
+"다를 수 있습니다!\n"
+"계속하시겠습니까?"
 
 msgid "SCRAPING IS RUNNING. DO YOU WANT TO STOP IT?"
 msgstr "스크랩이 진행중입니다. 중지하시겠습니까?"
@@ -1081,10 +1086,10 @@ msgid "THE BEZEL PROJECT"
 msgstr "베젤 프로젝트"
 
 msgid "SELECT BEZELS TO INSTALL/REMOVE"
-msgstr ""
+msgstr "설치/제거할 베젤 선택"
 
 msgid "fade"
-msgstr "흐림"
+msgstr "패이드"
 
 msgid "slide"
 msgstr "슬라이드"
@@ -1093,7 +1098,7 @@ msgid "instant"
 msgstr "즉시"
 
 msgid "fade & slide"
-msgstr "흐림 및 슬라이드"
+msgstr "패이드 & 슬라이드"
 
 msgid "System"
 msgstr "시스템"
@@ -1114,7 +1119,7 @@ msgid "Battery"
 msgstr "배터리"
 
 msgid "Model"
-msgstr ""
+msgstr "모델"
 
 msgid "Cpu model"
 msgstr "CPU 모델"
@@ -1162,7 +1167,7 @@ msgid "SHADERS"
 msgstr "셰이더"
 
 msgid "CONTROLLER SETTINGS"
-msgstr ""
+msgstr "컨트롤러 설정"
 
 msgid "CONTROLLER & BLUETOOTH SETTINGS"
 msgstr "컨트롤러 및 블루투스 설정"
@@ -1174,7 +1179,7 @@ msgid "KODI MEDIA CENTER"
 msgstr "KODI 미디어 센터"
 
 msgid "GAME SETTINGS"
-msgstr ""
+msgstr "게임 설정"
 
 msgid "UI SETTINGS"
 msgstr "UI 설정"
@@ -1210,13 +1215,13 @@ msgid "QUIT"
 msgstr "종료"
 
 msgid "SCRAPER IS RUNNING. DO YOU WANT TO STOP IT?"
-msgstr ""
+msgstr "스크랩 실행중입니다. 중지 하시겠습니까?"
 
 msgid "NEXT"
-msgstr ""
+msgstr "다음"
 
 msgid "SCRAPING DATABASE"
-msgstr ""
+msgstr "데이터베이스 스크랩핑"
 
 msgid "IMAGE SOURCE"
 msgstr "이미지 소스"
@@ -1228,10 +1233,10 @@ msgid "TITLE SCREENSHOT"
 msgstr "타이틀 스크린샷"
 
 msgid "MIX V1"
-msgstr "혼합 V1"
+msgstr "믹스 V1"
 
 msgid "MIX V2"
-msgstr "혼합 V2"
+msgstr "믹스 V2"
 
 msgid "BOX 2D"
 msgstr "박스 2D"
@@ -1282,16 +1287,16 @@ msgid "PASSWORD"
 msgstr "비밀번호"
 
 msgid "ARE YOU SURE YOU WANT TO CONFIGURE THE INPUT?"
-msgstr ""
+msgstr "입력 설정을 진행하시겠습니까?"
 
 msgid "CHOOSE"
 msgstr "이동"
 
 msgid "THE UI MODE IS NOW UNLOCKED"
-msgstr ""
+msgstr "이제 UI 모드가 잠금 해제되었습니다."
 
 msgid "ENTER THE CODE TO UNLOCK THE CURRENT UI MODE"
-msgstr ""
+msgstr "코드를 입력하여 현재 UI 모드의 잠금을 해제합니다"
 
 msgid "USER DISK USAGE"
 msgstr "사용자 디스크 사용량"
@@ -1324,20 +1329,20 @@ msgid "OVERSCAN"
 msgstr "오버스캔"
 
 msgid "USE OMX PLAYER (HARDWARE ACCELERATED)"
-msgstr ""
+msgstr "OMX 플레이어 사용 (하드웨어 가속)"
 
 msgid "TOOLS"
 msgstr "도구"
 
 msgid "STOP LAUNCHING THIS GAME AT STARTUP"
-msgstr ""
+msgstr "시작 시 현재 게임 실행 중지"
 
 msgid "ENABLE PUBLIC WEB ACCESS"
-msgstr "공용 인터넷 접속 허용"
+msgstr "공개 웹 API 접근 혀용"
 
 #, c-format
 msgid "Allow public web access API using %s"
-msgstr "다음을 이용한 공용 인터넷 접속을 허용 : %s"
+msgstr "%s 이용한 공개 웹 API 접근 허용"
 
 msgid "REBOOT REQUIRED TO APPLY THE NEW CONFIGURATION"
 msgstr "새로운 환경설정을 적용하기 위해서는 시스템 재시작이 필요합니다"
@@ -1349,19 +1354,19 @@ msgid "CREATE A SUPPORT FILE"
 msgstr "지원용 파일 생성"
 
 msgid "CREATE A SUPPORT FILE?"
-msgstr "지원용 파일을 만드시겠습니까?"
+msgstr "지원용 파일을 생성하시겠습니까?"
 
 msgid "SUPPORT FILE CREATED IN SAVES FOLDER"
-msgstr ""
+msgstr "저장 폴더에 지원용 파일 생성되었습니다"
 
 msgid "SUPPORT FILE CREATION FAILED"
-msgstr ""
+msgstr "지원용 파일 생성에 실패하였습니다"
 
 msgid "FORMAT A DISK"
 msgstr "디스크 포맷"
 
 msgid "CLEAN GAMELISTS & REMOVE UNUSED MEDIA"
-msgstr "게임 목록 정리 & 미사용 미디어 삭제"
+msgstr "게임리스트 정리 & 미사용 미디어 삭제"
 
 msgid "Cleaning"
 msgstr "정리 중 "
@@ -1391,13 +1396,13 @@ msgid "IGNORE MULTI-FILE DISK CONTENT (CUE/GDI/CCD/M3U)"
 msgstr "다중 디스크 컨텐츠 무시 (CUE/GDI/CCD/M3U)"
 
 msgid "ENABLE FILTERS"
-msgstr "필터 활성화"
+msgstr "게임 필터 사용"
 
 msgid "SAVE METADATA ON EXIT"
 msgstr "종료시 메타데이터 저장"
 
 msgid "PARSE GAMESLISTS ONLY"
-msgstr "게임 목록 항목만 표시"
+msgstr "게임리스트만 확인"
 
 msgid "SEARCH FOR LOCAL ART"
 msgstr "내부 이미지 검색"
@@ -1415,7 +1420,7 @@ msgid "ON-SCREEN KEYBOARD"
 msgstr "화상 키보드"
 
 msgid "HIDE EMULATIONSTATION WHEN RUNNING A GAME"
-msgstr ""
+msgstr "게임 실행중 에뮬레이션스태이션 숨기기"
 
 msgid "COMPLETE QUIT MENU"
 msgstr "종료 메뉴"
@@ -1433,7 +1438,7 @@ msgid "SWITCH A & B BUTTONS IN EMULATIONSTATION"
 msgstr "에뮬레이션스테이션에서 A/B 버튼 교체"
 
 msgid "ACCESS GAME OPTIONS WITH NORTH BUTTON"
-msgstr "위쪽 버튼으로 게임 옵션 열기"
+msgstr "위 버튼으로 게임 옵션 열기"
 
 msgid ""
 "Switches to short-press North for Savestates & long-press South button for "
@@ -1450,16 +1455,16 @@ msgid "OPTIMIZATIONS"
 msgstr "최적화"
 
 msgid "PRELOAD UI ELEMENTS"
-msgstr ""
+msgstr "UI 요소 미리 불러오기"
 
 msgid "Reduce overall menu lag at the cost of storage space"
-msgstr ""
+msgstr "저장 공간을 사용하여 전체 메뉴 지연 시간 단축"
 
 msgid "PRELOAD METADATA MEDIA"
-msgstr ""
+msgstr "메타데이터 미디어 미리 불러오기"
 
 msgid "Reduce gamelist lag at the cost of storage space"
-msgstr ""
+msgstr "저장 공간을 사용하여 게임리스트 지연 시간 단축"
 
 msgid "THREADED LOADING"
 msgstr "스레드된 불러오기"
@@ -1495,34 +1500,34 @@ msgid "START UPDATE"
 msgstr "업데이트 시작"
 
 msgid "UPDATER IS ALREADY RUNNING"
-msgstr ""
+msgstr "업데이트가 이미 실행 중입니다"
 
 msgid "LANGUAGE"
 msgstr "언어"
 
 msgid "SELECT YOUR TIME ZONE"
-msgstr ""
+msgstr "타임 존 선택"
 
 msgid "TIME ZONE"
-msgstr ""
+msgstr "타임 존"
 
 msgid "SHOW CLOCK IN 12-HOUR FORMAT"
 msgstr "시간을 12시간 형식으로 표시"
 
 msgid "POWER SAVER MODES"
-msgstr "절전 모드"
+msgstr "절전모드"
 
 msgid "DISABLED"
 msgstr "사용안함"
 
 msgid "DEFAULT"
-msgstr ""
+msgstr "기본"
 
 msgid "INSTANT"
-msgstr ""
+msgstr "즉시"
 
 msgid "SCREEN READER (TEXT TO SPEECH)"
-msgstr ""
+msgstr "스크린 리더 (텍스트 음성 변환)"
 
 msgid "UI MODE"
 msgstr "UI 모드"
@@ -1532,6 +1537,9 @@ msgid ""
 "This will hide most menu options to prevent changes to the system.\n"
 "To unlock and return to the full UI, enter this code:"
 msgstr ""
+"사용자 인터페이스를 제한 모드로 변경:\n"
+"시스템 설정 변경을 막기위해 대부분의 메뉴 옵션을 숨깁니다.\n"
+"제한을 해제하고 전체 사용자 인터페이스를 다시 사용하려면 다음 코드를 입력:"
 
 msgid "Do you want to proceed?"
 msgstr "계속 진행하시겠습니까?"
@@ -1564,34 +1572,34 @@ msgid "SCREEN ROTATION"
 msgstr "화면 회전"
 
 msgid "0 DEGREES (AUTO)"
-msgstr ""
+msgstr "0 도 (자동)"
 
 msgid "90 DEGREES"
-msgstr ""
+msgstr "90 도"
 
 msgid "180 DEGREES"
-msgstr ""
+msgstr "180 도"
 
 msgid "270 DEGREES"
-msgstr ""
+msgstr "270 도"
 
 msgid "BOOT SPLASH"
 msgstr "부트 스플래시"
 
 msgid "DEFAULT VIDEO/USER SET SPLASH"
-msgstr ""
+msgstr "기본 비디오/사용자 설정 스플래시"
 
 msgid "SILENT VIDEO/USER SET SPLASH"
-msgstr ""
+msgstr "무음 비디오/사용자 설정 스플래시"
 
 msgid "BATOCERA SPLASH IMAGE"
-msgstr ""
+msgstr "바토세라 스플래시 이미지"
 
 msgid "SPLASH SETTING"
-msgstr ""
+msgstr "스플래시 설정"
 
 msgid "RETROACHIEVEMENT SETTINGS"
-msgstr ""
+msgstr "레트로 도전과제 설정"
 
 msgid "NETPLAY SETTINGS"
 msgstr "넷플레이 설정"
@@ -1639,7 +1647,7 @@ msgid "POWER LED COLOR"
 msgstr "파워 LED 색상"
 
 msgid "heartbeat"
-msgstr "심박"
+msgstr "하트비트"
 
 msgid "on"
 msgstr "켜짐"
@@ -1696,25 +1704,25 @@ msgid "AUTOMATIC SCREENSHOT"
 msgstr "자동 스크린샷"
 
 msgid "RETROACHIEVEMENT UNLOCK SOUND"
-msgstr ""
+msgstr "레트로 도전과제 해제 사운드"
 
 msgid "UNLOCK SOUND"
 msgstr "해제 사운드"
 
 msgid "SHOW RETROACHIEVEMENTS ENTRY IN MAIN MENU"
-msgstr ""
+msgstr "메인 메뉴에 레트로 도전과제 엔트리 표시"
 
 msgid "GAME INDEXES"
-msgstr "게임 색인"
+msgstr "게임 인덱스"
 
 msgid "INDEX NEW GAMES AT STARTUP"
-msgstr ""
+msgstr "시작시 새게임 인덱싱"
 
 msgid "INDEX GAMES"
-msgstr ""
+msgstr "게임 인덱싱"
 
 msgid "UNABLE TO ACTIVATE RETROACHIEVEMENTS:"
-msgstr ""
+msgstr "레트로 도전과제를 활성화할 수 없음:"
 
 msgid "ENABLE NETPLAY"
 msgstr "넷플레이 허용"
@@ -1729,85 +1737,85 @@ msgid "USE RELAY SERVER"
 msgstr "릴레이 서버 사용"
 
 msgid "DECORATION SET"
-msgstr ""
+msgstr "데코레이션 세트"
 
 msgid "DEFAULT GLOBAL SETTINGS"
-msgstr ""
+msgstr "기본 글로벌 설정"
 
 msgid "GAME ASPECT RATIO"
-msgstr ""
+msgstr "게임 화면 비율"
 
 msgid "VIDEO MODE"
 msgstr "비디오 모드"
 
 msgid "SMOOTH GAMES (BILINEAR FILTERING)"
-msgstr ""
+msgstr "부드러운 화면 (이중 선형 필터링)"
 
 msgid "REWIND"
 msgstr "되감기"
 
 msgid "INTEGER SCALING (PIXEL PERFECT)"
-msgstr "원본 게임 해상도(픽셀 일치)"
+msgstr "정수단위 해상도 조정 (픽셀 일치)"
 
 msgid "AUTO SAVE/LOAD ON GAME LAUNCH"
 msgstr "자동 저장/불러오기"
 
 msgid "SHOW SAVE STATES"
-msgstr ""
+msgstr "저장 상태 보기"
 
 msgid "SHOW SAVE STATES IF NOT EMPTY"
-msgstr ""
+msgstr "비어 있지 않을 경우 저장 상태 표시"
 
 msgid "INCREMENTAL SAVESTATES"
-msgstr ""
+msgstr "저장상태 증가"
 
 msgid "SHADER SET"
 msgstr "셰이더 설정"
 
 msgid "DECORATIONS"
-msgstr "꾸미기"
+msgstr "데코레이션"
 
 msgid "STRETCH BEZELS (4K & ULTRAWIDE)"
 msgstr "베젤 늘리기 (4K & 울트라 와이드)"
 
 msgid "SHOW CONTROLLER OVERLAYS"
-msgstr ""
+msgstr "컨트롤러 오버레이 표시"
 
 msgid "SYSTEM CONTROLLERS"
-msgstr ""
+msgstr "시스템 컨트롤러"
 
 msgid "CUSTOM .PNG IMAGE"
-msgstr ""
+msgstr "커스텀 이미지"
 
 msgid "OVERLAY CORNER"
-msgstr ""
+msgstr "오버레이 코너"
 
 msgid "NORTH WEST"
-msgstr ""
+msgstr "왼쪽 위"
 
 msgid "NORTH EAST"
-msgstr ""
+msgstr "오른쪽 위"
 
 msgid "SOUTH EAST"
-msgstr ""
+msgstr "오른쪽 아래"
 
 msgid "SOUTH WEST"
-msgstr ""
+msgstr "왼쪽 아래"
 
 msgid "CUSTOM .PNG IMAGE PATH"
-msgstr ""
+msgstr "사용자 .PNG 이미지 경로"
 
 msgid "AI GAME TRANSLATION"
 msgstr "AI 게임 번역"
 
 msgid "ENABLE AI TRANSLATION SERVICE"
-msgstr ""
+msgstr "AI 번역 서비스 사용"
 
 msgid "TARGET LANGUAGE"
 msgstr "대상 언어"
 
 msgid "AI TRANSLATION SERVICE URL"
-msgstr ""
+msgstr "AI 번역 서비스 URL"
 
 msgid "PAUSE ON TRANSLATED SCREEN"
 msgstr "번역화면 일시정지"
@@ -1819,10 +1827,10 @@ msgid "GAME HASHING IS RUNNING. DO YOU WANT TO STOP IT?"
 msgstr "게임 해시 구성이 실행 중입니다. 중지 하시겠습니까?"
 
 msgid "REALLY UPDATE GAMELISTS?"
-msgstr ""
+msgstr "정말로 게임리스트를 업데이트 하시겠습니까?"
 
 msgid "CONTROLLER MAPPING"
-msgstr ""
+msgstr "컨트롤러 맵핑"
 
 msgid ""
 "YOU ARE GOING TO MAP A CONTROLLER. MAP BASED ON THE BUTTON'S POSITION "
@@ -1831,13 +1839,17 @@ msgid ""
 "BUTTONS/STICKS YOU DO NOT HAVE BY HOLDING ANY KEY. PRESS THE SOUTH BUTTON TO "
 "CONFIRM WHEN DONE."
 msgstr ""
+"컨트롤러를 맵핑할 것입니다. 기기의 라벨이 아닌 SNES 컨트롤러에서 해당 버튼과 "
+"관련된 버튼 위치를 기반으로 하는 맵핑입니다. 핫키를 위한 별도 키가 없다면 "
+"SELECT 버튼을 사용하십시오. 키를 누르고 있으면 없는 모든 버튼을 건너뜁니다. "
+"완료되면 SOUTH 버튼을 눌러 확인합니다."
 
 msgid "PAIR A BLUETOOTH DEVICE"
 msgstr "블루투스 장치 페어링"
 
 #, c-format
 msgid "P%i'S CONTROLLER"
-msgstr ""
+msgstr "%iP 컨트롤러"
 
 msgid "default"
 msgstr "기본"
@@ -1849,13 +1861,13 @@ msgid "SHOW CONTROLLER BATTERY LEVEL"
 msgstr "컨트롤러 배터리 상태 보이기"
 
 msgid "YOU MUST APPLY THE THEME BEFORE EDITING ITS CONFIGURATION"
-msgstr ""
+msgstr "설정을 변경하기전에 테마를 적용해야 합니다"
 
 msgid "THEME CONFIGURATION"
 msgstr "테마 설정"
 
 msgid "GAMELIST STYLE"
-msgstr "게임목록 스타일"
+msgstr "게임리스트 스타일"
 
 msgid "basic"
 msgstr "기본"
@@ -1867,7 +1879,7 @@ msgid "DEFAULT GRID SIZE"
 msgstr "기본 그리드 크기"
 
 msgid "GAMELIST THEME OPTIONS"
-msgstr "게임 목록 테마 옵션"
+msgstr "게임리스트 테마 옵션"
 
 msgid "THEME OPTIONS"
 msgstr "테마 옵션"
@@ -1876,7 +1888,7 @@ msgid "DEFAULT VALUE"
 msgstr "기본값"
 
 msgid "GAMELIST OPTIONS"
-msgstr "게임 목록 옵션"
+msgstr "게임리스트 옵션"
 
 msgid "SHOW FAVORITES ON TOP"
 msgstr "최상단에 즐겨찾기 보이기"
@@ -1900,25 +1912,25 @@ msgid "AFTER NAME"
 msgstr "이름 뒤"
 
 msgid "SHOW REGION FLAG"
-msgstr "목록에 언어 플래그 표시"
+msgstr "언어 플래그 표시"
 
 msgid "SHOW SAVESTATE ICON"
-msgstr "목록에 상태저장 플래그 표시"
+msgstr "상태저장 플래그 표시"
 
 msgid "SHOW MANUAL ICON"
-msgstr "목록에 매뉴얼 아이콘 표시"
+msgstr "매뉴얼 아이콘 표시"
 
 msgid "SHOW FILENAMES INSTEAD"
-msgstr "목록에 파일이름 표시"
+msgstr "이름 대신 파일명 표시"
 
 msgid "FILE EXTENSIONS"
 msgstr "파일 확장자"
 
 msgid "RESET CUSTOMIZATIONS"
-msgstr ""
+msgstr "사용자 설정 초기화"
 
 msgid "APPEARANCE"
-msgstr ""
+msgstr "외형"
 
 msgid "THEME SET"
 msgstr "테마 선택"
@@ -1930,10 +1942,10 @@ msgid "grid"
 msgstr "그리드"
 
 msgid "DISPLAY OPTIONS"
-msgstr "표시 옵션"
+msgstr "디스플레이 옵션"
 
 msgid "LIST TRANSITION STYLE"
-msgstr "화면 전환 형식"
+msgstr "리스트 전환 형식"
 
 msgid "GAME LAUNCH TRANSITION"
 msgstr "게임 실행 전환"
@@ -1954,7 +1966,7 @@ msgid "ICON AND TEXT"
 msgstr "아이콘 및 텍스트"
 
 msgid "IGNORE LEADING ARTICLES WHEN SORTING"
-msgstr ""
+msgstr "정렬할 때 선행 관사 무시"
 
 msgid "VOLUME"
 msgstr "볼륨"
@@ -2047,10 +2059,10 @@ msgid "VIEW BATOCERA MANUAL"
 msgstr "바토세라 매뉴얼 보기"
 
 msgid "RESTART SYSTEM"
-msgstr "시스템 다시 시작"
+msgstr "시스템 재시작"
 
 msgid "REALLY RESTART?"
-msgstr "정말로 다시 시작 하시겠습니까?"
+msgstr "정말로 재시작 하시겠습니까?"
 
 msgid "SHUTDOWN SYSTEM"
 msgstr "시스템 종료"
@@ -2065,10 +2077,10 @@ msgid "REALLY SHUTDOWN WITHOUT SAVING METADATA?"
 msgstr "게임 정보를 저장하지 않고 시스템을 종료하시겠습니까?"
 
 msgid "QUIT EMULATIONSTATION"
-msgstr "에뮬레이션스테이션 나가기"
+msgstr "에뮬레이션스테이션 종료"
 
 msgid "REALLY QUIT?"
-msgstr "정말로 나가시겠습니까?"
+msgstr "정말로 종료하시겠습니까?"
 
 msgid "COLORIZATION"
 msgstr "색상변경"
@@ -2095,7 +2107,7 @@ msgid "AUTOCONFIGURE CONTROLLERS"
 msgstr "컨트롤러 자동설정"
 
 msgid "LAUNCH THIS GAME AT STARTUP"
-msgstr ""
+msgstr "시작 시 현재 게임을 실행"
 
 msgid "FORMAT DEVICE"
 msgstr "장치 포맷"
@@ -2110,7 +2122,7 @@ msgid "FORMAT NOW"
 msgstr "지금 포맷"
 
 msgid "SELECTED OPTIONS ARE INVALID"
-msgstr "선택한 옵션들은 유요하지 않습니다"
+msgstr "선택한 옵션들은 유효하지 않습니다"
 
 msgid "ARE YOU SURE YOU WANT TO FORMAT THIS DRIVE?"
 msgstr "정말로 현재 드라이브를 포맷하시겠습니까?"
@@ -2132,19 +2144,19 @@ msgid "NO DEVICE FOUND"
 msgstr "발견된 장치 없음"
 
 msgid "ZOOM OUT"
-msgstr ""
+msgstr "축소"
 
 msgid "ZOOM IN"
-msgstr ""
+msgstr "확대"
 
 msgid "MOVE"
 msgstr "이동"
 
 msgid "ZOOM"
-msgstr "확대"
+msgstr "확대/축소"
 
 msgid "GAMES TO INDEX"
-msgstr ""
+msgstr "게임 인덱스"
 
 msgid "SYSTEM INFO"
 msgstr "시스템 정보"
@@ -2156,7 +2168,7 @@ msgid "QUICK SEARCH"
 msgstr "빠른 검색"
 
 msgid "GO TO LETTER"
-msgstr "단어로 이동"
+msgstr "바로 가기"
 
 msgid "GO TO MANUFACTURER"
 msgstr "제조업체로 이동"
@@ -2165,7 +2177,7 @@ msgid "GO TO HARDWARE"
 msgstr "하드웨어로 이동"
 
 msgid "GO TO DECADE"
-msgstr "시대로 이동"
+msgstr "발매연도로 이동"
 
 msgid "CONFIGURATION"
 msgstr "환경설정"
@@ -2186,7 +2198,7 @@ msgid_plural "%i GAMES"
 msgstr[0] "%i 게임"
 
 msgid "RANDOM"
-msgstr "무작위"
+msgstr "랜덤"
 
 msgid "FILES"
 msgstr "파일"
@@ -2196,12 +2208,18 @@ msgid ""
 "FORMAT.\n"
 "DO YOU WANT TO LAUNCH IT ANYWAY?"
 msgstr ""
+"경고: 현재 설정된 에뮬레이터/코어는 이 게임의 파일 형식을 지원하지 않습니"
+"다.\n"
+"그래도 시작하시겠습니까?"
 
 msgid ""
 "WARNING: THE SYSTEM HAS MISSING BIOS FILE(S) AND THE GAME MAY NOT WORK "
 "CORRECTLY.\n"
 "DO YOU WANT TO LAUNCH IT ANYWAY?"
 msgstr ""
+"경고: 현재 시스템에는 BIOS 파일이 빠져있고 게임이 제대로 작동하지 않을 수 있"
+"습니다.\n"
+"그래도 시작하시겠습니까?"
 
 msgid "Preloading UI"
 msgstr "UI 불러오는 중"
@@ -2210,7 +2228,7 @@ msgid "Loading theme"
 msgstr "테마 불러오는 중"
 
 msgid "Loading gamelists"
-msgstr "게임목록 불러오는 중"
+msgstr "게임리스트 불러오는 중"
 
 msgid "MENU"
 msgstr "메뉴"
@@ -2305,10 +2323,10 @@ msgid "LAST PLAYED, DESCENDING"
 msgstr "최근 플레이, 낮은순"
 
 msgid "NUMBER PLAYERS, ASCENDING"
-msgstr "플레이어 수, 높은순"
+msgstr "인원 수, 높은순"
 
 msgid "NUMBER PLAYERS, DESCENDING"
-msgstr "플레이어 수, 낮은순"
+msgstr "인원 수, 낮은순"
 
 msgid "RELEASE DATE, ASCENDING"
 msgstr "발매일, 오름차순"
@@ -2329,10 +2347,10 @@ msgid "DEVELOPER, DESCENDING"
 msgstr "개발사, 내림차순"
 
 msgid "PUBLISHER, ASCENDING"
-msgstr "퍼블리셔, 오름차순"
+msgstr "유통사, 오름차순"
 
 msgid "PUBLISHER, DESCENDING"
-msgstr "퍼블리셔, 내림차순"
+msgstr "유통사, 내림차순"
 
 msgid "SYSTEM, ASCENDING"
 msgstr "시스템, 오름차순"
@@ -2353,19 +2371,19 @@ msgid "GAME TIME, DESCENDING"
 msgstr "게임 시간, 내림차순"
 
 msgid "SYSTEM, RELEASE YEAR, ASCENDING"
-msgstr "시스템, 출시일, 오름차순"
+msgstr "시스템, 발매일, 오름차순"
 
 msgid "SYSTEM, RELEASE YEAR, DESCENDING"
-msgstr "시스템, 출시일, 내림차순"
+msgstr "시스템, 발매일, 내림차순"
 
 msgid "RELEASE YEAR, SYSTEM, ASCENDING"
-msgstr "출시일, 시스템, 오름차순"
+msgstr "발매일, 시스템, 오름차순"
 
 msgid "RELEASE YEAR, SYSTEM, DESCENDING"
-msgstr "출시일, 시스템, 내림차순"
+msgstr "발매일, 시스템, 내림차순"
 
 msgid "A,AN,THE"
-msgstr ""
+msgstr "A,AN,THE"
 
 msgid "Extracting"
 msgstr "추출 중"
@@ -2380,7 +2398,7 @@ msgid "INDEXING COMPLETED"
 msgstr "인덱싱 완료"
 
 msgid "UPDATE GAMELISTS TO APPLY CHANGES."
-msgstr ""
+msgstr "변경사항을 적용하려면 게임리스트를 업데이트 하십시오."
 
 msgid "GENRE"
 msgstr "장르"
@@ -2389,16 +2407,16 @@ msgid "FAMILY"
 msgstr "패밀리"
 
 msgid "PLAYERS"
-msgstr "플레이어수"
+msgstr "인원 수"
 
 msgid "PUBLISHER/DEVELOPER"
-msgstr ""
+msgstr "유통사/개발사"
 
 msgid "RATING"
 msgstr "평점"
 
 msgid "YEAR"
-msgstr "년도"
+msgstr "발매 연도"
 
 msgid "REGION"
 msgstr "지역"
@@ -2442,7 +2460,7 @@ msgid "SHIFT"
 msgstr "시프트"
 
 msgid "SPACE"
-msgstr "스페이스"
+msgstr "스패이스"
 
 msgid "UP"
 msgstr "위"
@@ -2451,10 +2469,10 @@ msgid "DOWN"
 msgstr "아래"
 
 msgid "LEFT"
-msgstr "좌"
+msgstr "왼쪽"
 
 msgid "RIGHT"
-msgstr "우"
+msgstr "오른쪽"
 
 msgid "LEFT ANALOG UP"
 msgstr "왼쪽 아날로그 위"
@@ -2463,10 +2481,10 @@ msgid "LEFT ANALOG DOWN"
 msgstr "왼쪽 아날로그 아래"
 
 msgid "LEFT ANALOG LEFT"
-msgstr "왼쪽 아날로그 좌"
+msgstr "왼쪽 아날로그 왼쪽"
 
 msgid "LEFT ANALOG RIGHT"
-msgstr "왼쪽 아날로그 우"
+msgstr "왼쪽 아날로그 오른쪽"
 
 msgid "RIGHT ANALOG UP"
 msgstr "오른쪽 아날로그 위"
@@ -2475,10 +2493,10 @@ msgid "RIGHT ANALOG DOWN"
 msgstr "오른쪽 아날로그 아래"
 
 msgid "RIGHT ANALOG LEFT"
-msgstr "오른쪽 아날로그 좌"
+msgstr "오른쪽 아날로그 왼쪽"
 
 msgid "RIGHT ANALOG RIGHT"
-msgstr "오른쪽 아날로그 우"
+msgstr "오른쪽 아날로그 오른쪽"
 
 msgid "HOTKEY"
 msgstr "핫키"
@@ -2506,12 +2524,14 @@ msgid ""
 "NO HOTKEY BUTTON HAS BEEN ASSIGNED. THIS IS REQUIRED FOR EXITING GAMES WITH "
 "A CONTROLLER. DO YOU WANT TO USE THE SELECT BUTTON AS YOUR HOTKEY?"
 msgstr ""
+"핫키 버튼이 할당되지 않았습니다. 컨트롤러로 게임을 종료하는 데 필요합니다."
+"SELECT 버튼을 핫키로 사용하시겠습니까?"
 
 msgid "SET SELECT AS HOTKEY"
-msgstr ""
+msgstr "SELECT를 핫키로 설정"
 
 msgid "DO NOT ASSIGN HOTKEY"
-msgstr ""
+msgstr "핫키를 설정하지 않음"
 
 #, c-format
 msgid "HOLD FOR %iS TO SKIP"
@@ -2612,10 +2632,10 @@ msgid "%d s"
 msgstr "%d 초"
 
 msgid "SCREEN READER ENABLED"
-msgstr ""
+msgstr "스크린 리더 사용"
 
 msgid "SCREEN READER DISABLED"
-msgstr ""
+msgstr "스크린 리더 사용안함"
 
 #~ msgid "PRELOAD UI"
 #~ msgstr "UI 사전 불러오기"
