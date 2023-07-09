@@ -1696,16 +1696,16 @@ void GuiMenu::openSystemSettings_batocera()
 				{ openNetplaySettings(); },
 				"iconNetplay");
 
-		//		if (ApiSystem::getInstance()->isScriptingSupported(ApiSystem::BIOSINFORMATION))
-		//		{
-		//			s->addEntry(_("MISSING BIOS CHECK"), true, [this, s] { openMissingBiosSettings(); });
+		if (ApiSystem::getInstance()->isScriptingSupported(ApiSystem::BIOSINFORMATION))
+		{
+			s->addEntry(_("MISSING BIOS CHECK"), true, [this, s] { openMissingBiosSettings(); });
 		// #ifndef _ENABLEEMUELEC
 		//			auto checkBiosesAtLaunch = std::make_shared<SwitchComponent>(mWindow);
 		//			checkBiosesAtLaunch->setState(Settings::getInstance()->getBool("CheckBiosesAtLaunch"));
 		//			s->addWithLabel(_("CHECK BIOS FILES BEFORE RUNNING A GAME"), checkBiosesAtLaunch);
 		//			s->addSaveFunc([checkBiosesAtLaunch] { Settings::getInstance()->setBool("CheckBiosesAtLaunch", checkBiosesAtLaunch->getState()); });
 		// #endif
-		//		}
+		}
 	}
 
 	std::shared_ptr<OptionListComponent<std::string>> overclock_choice;
@@ -2701,17 +2701,17 @@ if (SystemConf::getInstance()->get("system.es.menu") != "bartop")
 			{ openNetplaySettings(); },
 			"iconNetplay");
 
-	//		// Missing Bios
-	//		if (ApiSystem::getInstance()->isScriptingSupported(ApiSystem::BIOSINFORMATION))
-	//		{
-	//			s->addEntry(_("MISSING BIOS CHECK"), true, [this, s] { openMissingBiosSettings(); });
+	// Missing Bios
+	if (ApiSystem::getInstance()->isScriptingSupported(ApiSystem::BIOSINFORMATION))
+	{
+		s->addEntry(_("MISSING BIOS CHECK"), true, [this, s] { openMissingBiosSettings(); });
 	// #ifndef _ENABLEEMUELEC
 	//			auto checkBiosesAtLaunch = std::make_shared<SwitchComponent>(mWindow);
 	//			checkBiosesAtLaunch->setState(Settings::getInstance()->getBool("CheckBiosesAtLaunch"));
 	//			s->addWithLabel(_("CHECK BIOS FILES BEFORE RUNNING A GAME"), checkBiosesAtLaunch);
 	//			s->addSaveFunc([checkBiosesAtLaunch] { Settings::getInstance()->setBool("CheckBiosesAtLaunch", checkBiosesAtLaunch->getState()); });
 	// #endif
-	//		}
+	}
 
 	// Game List Update
 	// s->addEntry(_("UPDATE GAME LISTS"), false, [this, window] { updateGameLists(window); });
