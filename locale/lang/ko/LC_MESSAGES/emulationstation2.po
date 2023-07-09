@@ -1779,10 +1779,10 @@ msgid "QUIET"
 msgstr "저소음"
 
 msgid "MODERATE"
-msgstr "보통"
+msgstr "중간"
 
 msgid "AGGRESSIVE"
-msgstr "집중"
+msgstr "고성능"
 
 msgid "CUSTOM"
 msgstr "사용자 지정"
@@ -2726,7 +2726,7 @@ msgid "SHOW SYSTEM NAME IN COLLECTIONS"
 msgstr "컬렉션에서 시스템 이름 표시"
 
 msgid "SHOW GAMES OF HIDDEN SYSTEMS IN COLLECTIONS"
-msgstr "컬렉셔이 숨겨진 시스템 게임 표시"
+msgstr "컬렉션이 숨겨진 시스템 게임 표시"
 
 msgid "SELECT COLLECTIONS"
 msgstr "컬렉션 선택"
