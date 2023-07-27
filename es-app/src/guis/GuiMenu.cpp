@@ -432,6 +432,13 @@ void GuiMenu::openDangerZone(Window* mWindow, std::string configName)
 				}, _("NO"), nullptr));
      });
 
+    dangerZone->addEntry(_("RESET AUDIO CONFIGURATION"), true, [mWindow] {
+    mWindow->pushGui(new GuiMsgBox(mWindow, _("WARNING THIS WILL RESTART EMULATIONSTATION AND REBOOT!"), _("YES"),
+                                [] {
+                                runSystemCommand("/usr/bin/run \"rm -f /storage/.config/asound*;reboot\"", "", nullptr);
+                                }, _("NO"), nullptr));
+     });
+
 mWindow->pushGui(dangerZone);
 }
 
@@ -1381,9 +1388,11 @@ void GuiMenu::openSystemSettings_batocera()
 	bool wfound = false;
 	for (auto it = availableThreads.begin(); it != availableThreads.end(); it++)
 	{
-		optionsThreads->add((*it), (*it), selectedThreads == (*it));
-		if (selectedThreads == (*it))
-		wfound = true;
+		if ( *it != "default" ) {
+			optionsThreads->add((*it), (*it), selectedThreads == (*it));
+			if (selectedThreads == (*it))
+				wfound = true;
+		}
 	}
 	if (!wfound)
 		optionsThreads->add(selectedThreads, selectedThreads, true);
@@ -1429,25 +1438,28 @@ void GuiMenu::openSystemSettings_batocera()
 // Prep for additional device support.
 #if defined(AMD64)
 	// Provides overclock profile switching
-	auto optionsOCProfile = std::make_shared<OptionListComponent<std::string> >(mWindow, _("CPU Max TDP (AMD Only)"), false);
+	auto deviceTDP = getenv("DEVICE_BASE_TDP");
+	auto optionsOCProfile = std::make_shared<OptionListComponent<std::string> >(mWindow, _("CPU TDP Max (AMD Only)"), false);
 	std::string selectedOCProfile = SystemConf::getInstance()->get("system.overclock");
-	if (selectedOCProfile.empty())
-		selectedOCProfile = "off";
+	if (selectedOCProfile.empty() || selectedOCProfile == deviceTDP)
+		selectedOCProfile = "default";
 
-	optionsOCProfile->add(_("OFF"),    "off", selectedOCProfile == "off");
-        optionsOCProfile->add(_("2w"),"2w", selectedOCProfile == "2w");
-        optionsOCProfile->add(_("4w"),"4w", selectedOCProfile == "4w");
-        optionsOCProfile->add(_("6w"),"6w", selectedOCProfile == "6w");
-        optionsOCProfile->add(_("8w"),"8w", selectedOCProfile == "8w");
-        optionsOCProfile->add(_("10w"),"10w", selectedOCProfile == "10w");
-        optionsOCProfile->add(_("12w"),"12w", selectedOCProfile == "12w");
-        optionsOCProfile->add(_("14w"),"14w", selectedOCProfile == "14w");
-        optionsOCProfile->add(_("16w"),"16w", selectedOCProfile == "16w");
-        optionsOCProfile->add(_("18w"),"18w", selectedOCProfile == "18w");
-        optionsOCProfile->add(_("20w"),"20w", selectedOCProfile == "20w");
-        optionsOCProfile->add(_("22w"),"22w", selectedOCProfile == "22w");
-        optionsOCProfile->add(_("24w"),"24w", selectedOCProfile == "24w");
- 	s->addWithLabel(_("CPU Max TDP (AMD Only)"), optionsOCProfile);
+	if (deviceTDP) {
+		optionsOCProfile->add(_("DEVICE DEFAULT (") + deviceTDP + ")", "default", selectedOCProfile == "default");
+	} else {
+		optionsOCProfile->add(_("DEFAULT"), "default", selectedOCProfile == "default");
+	}
+
+        optionsOCProfile->add(_("2.5W"),"2.5w", selectedOCProfile == "2.5w");
+        optionsOCProfile->add(_("4.5W"),"4.5w", selectedOCProfile == "4.5w");
+        optionsOCProfile->add(_("9W"),"9w", selectedOCProfile == "9w");
+        optionsOCProfile->add(_("12W"),"12w", selectedOCProfile == "12w");
+        optionsOCProfile->add(_("15W"),"15w", selectedOCProfile == "15w");
+        optionsOCProfile->add(_("18W"),"18w", selectedOCProfile == "18w");
+        optionsOCProfile->add(_("22W"),"22w", selectedOCProfile == "22w");
+        optionsOCProfile->add(_("24W"),"24w", selectedOCProfile == "24w");
+        optionsOCProfile->add(_("28W"),"28w", selectedOCProfile == "28w");
+ 	s->addWithLabel(_("CPU TDP Max (AMD Only)"), optionsOCProfile);
 
 	s->addSaveFunc([this, optionsOCProfile, selectedOCProfile]
 	{
@@ -1462,9 +1474,9 @@ void GuiMenu::openSystemSettings_batocera()
 	});
 #endif
 
-        // Default CPU governor
+        // Default Scaling governor
 
-        auto cpuGovUpdate = std::make_shared<OptionListComponent<std::string> >(mWindow, _("DEFAULT CPU GOVERNOR"), false);
+        auto cpuGovUpdate = std::make_shared<OptionListComponent<std::string> >(mWindow, _("DEFAULT SCALING GOVERNOR"), false);
 
         std::string cpu_governor = SystemConf::getInstance()->get("system.cpugovernor");
         if (cpu_governor.empty())
@@ -1475,7 +1487,7 @@ void GuiMenu::openSystemSettings_batocera()
         cpuGovUpdate->add(_("PERFORMANCE"), "performance", cpu_governor == "performance");
         cpuGovUpdate->add(_("POWERSAVE"), "powersave", cpu_governor == "powersave");
 
-        s->addWithLabel(_("DEFAULT CPU GOVERNOR"), cpuGovUpdate);
+        s->addWithLabel(_("DEFAULT SCALING GOVERNOR"), cpuGovUpdate);
 
         s->addSaveFunc([this, cpuGovUpdate, cpu_governor]
         {
@@ -1541,6 +1553,10 @@ void GuiMenu::openSystemSettings_batocera()
 	                SystemConf::getInstance()->set("system.power.audio", enhaudiopowersaveEnabled ? "1" : "0");
 	                SystemConf::getInstance()->saveSystemConf();
 	        });
+
+
+		auto warn = std::make_shared<TextComponent>(mWindow, "Below options can affect stability.", ThemeData::getMenuTheme()->Text.font, ThemeData::getMenuTheme()->Text.color);
+		s->addWithLabel(_("WARNING"), warn);
 	        auto enh_pciepowersave = std::make_shared<SwitchComponent>(mWindow);
 	        bool enhpciepowersaveEnabled = SystemConf::getInstance()->get("system.power.pcie") == "1";
 	        enh_pciepowersave->setState(enhpciepowersaveEnabled);
@@ -5013,28 +5029,23 @@ void GuiMenu::popSpecificConfigurationGui(Window* mWindow, std::string title, st
 // Prep for additional device support.
 #if defined(AMD64)
         // Provides overclock profile switching
-        auto optionsOCProfile = std::make_shared<OptionListComponent<std::string> >(mWindow, _("CPU Max TDP (AMD Only)"), false);
+        auto optionsOCProfile = std::make_shared<OptionListComponent<std::string> >(mWindow, _("CPU TDP Max (AMD Only)"), false);
         std::string selectedOCProfile = SystemConf::getInstance()->get(configName + ".overclock");
         if (selectedOCProfile.empty())
-                selectedOCProfile = "system";
+                selectedOCProfile = "default";
 
-        optionsOCProfile->add(_("DEFAULT"), "system", selectedOCProfile == "system");
-        optionsOCProfile->add(_("OFF"), "off", selectedOCProfile == "off");
-        optionsOCProfile->add(_("2w"),"2w", selectedOCProfile == "2w");
-        optionsOCProfile->add(_("4w"),"4w", selectedOCProfile == "4w");
-        optionsOCProfile->add(_("6w"),"6w", selectedOCProfile == "6w");
-        optionsOCProfile->add(_("8w"),"8w", selectedOCProfile == "8w");
-        optionsOCProfile->add(_("10w"),"10w", selectedOCProfile == "10w");
-        optionsOCProfile->add(_("12w"),"12w", selectedOCProfile == "12w");
-        optionsOCProfile->add(_("14w"),"14w", selectedOCProfile == "14w");
-        optionsOCProfile->add(_("16w"),"16w", selectedOCProfile == "16w");
-        optionsOCProfile->add(_("18w"),"18w", selectedOCProfile == "18w");
-        optionsOCProfile->add(_("20w"),"20w", selectedOCProfile == "20w");
-        optionsOCProfile->add(_("22w"),"22w", selectedOCProfile == "22w");
-        optionsOCProfile->add(_("24w"),"24w", selectedOCProfile == "24w");
-#endif
-#if defined(AMD64)
-        systemConfiguration->addWithLabel(_("CPU Max TDP (AMD Only)"), optionsOCProfile);
+	optionsOCProfile->add(_("DEFAULT"), "default", selectedOCProfile == "default");
+        optionsOCProfile->add(_("2.5W"),"2.5w", selectedOCProfile == "2.5w");
+        optionsOCProfile->add(_("4.5W"),"4.5w", selectedOCProfile == "4.5w");
+        optionsOCProfile->add(_("9W"),"9w", selectedOCProfile == "9w");
+        optionsOCProfile->add(_("12W"),"12w", selectedOCProfile == "12w");
+        optionsOCProfile->add(_("15W"),"15w", selectedOCProfile == "15w");
+        optionsOCProfile->add(_("18W"),"18w", selectedOCProfile == "18w");
+        optionsOCProfile->add(_("22W"),"22w", selectedOCProfile == "22w");
+        optionsOCProfile->add(_("24W"),"24w", selectedOCProfile == "24w");
+        optionsOCProfile->add(_("28W"),"28w", selectedOCProfile == "28w");
+
+        systemConfiguration->addWithLabel(_("CPU TDP Max (AMD Only)"), optionsOCProfile);
 
         systemConfiguration->addSaveFunc([optionsOCProfile, selectedOCProfile, configName, mWindow]
         {
@@ -5062,7 +5073,7 @@ void GuiMenu::popSpecificConfigurationGui(Window* mWindow, std::string title, st
         cpuGovUpdate->add(_("PERFORMANCE"), "performance", cpu_governor == "performance");
         cpuGovUpdate->add(_("powersave"), "powersave", cpu_governor == "powersave");
 
-        systemConfiguration->addWithLabel(_("DEFAULT CPU GOVERNOR"), cpuGovUpdate);
+        systemConfiguration->addWithLabel(_("DEFAULT SCALING GOVERNOR"), cpuGovUpdate);
 
         systemConfiguration->addSaveFunc([configName, cpuGovUpdate, cpu_governor]
         {
@@ -5072,6 +5083,7 @@ void GuiMenu::popSpecificConfigurationGui(Window* mWindow, std::string title, st
           }
         });
 
+#if defined(AMD64)
         if (SystemConf::getInstance()->getBool("system.powersave", true)) {
           // GPU performance mode with enhanced power savings
           auto gpuPerformance = std::make_shared<OptionListComponent<std::string> >(mWindow, _("GPU POWER SAVINGS MODE (AMD ONLY)"), false);
@@ -5095,6 +5107,7 @@ void GuiMenu::popSpecificConfigurationGui(Window* mWindow, std::string title, st
             }
           });
         }
+#endif
 
 #endif
 	if (systemData->isFeatureSupported(currentEmulator, currentCore, EmulatorFeatures::latency_reduction))
