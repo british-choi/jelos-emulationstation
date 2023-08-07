@@ -8,9 +8,9 @@
 #include <unistd.h>
 #include "platform.h"
 
-std::string BACKLIGHT_DEVICE = std::string(getShOutput(R"(/usr/bin/brightness device)"));
-std::string BACKLIGHT_BRIGHTNESS_NAME = "/sys/class/backlight/" + BACKLIGHT_DEVICE + "/brightness";
-std::string BACKLIGHT_BRIGHTNESS_MAX_NAME = "/sys/class/backlight/" + BACKLIGHT_DEVICE + "/max_brightness";
+std::string BACKLIGHT_PATH = std::string(getShOutput(R"(/usr/bin/brightness path)"));
+std::string BACKLIGHT_BRIGHTNESS_NAME = BACKLIGHT_PATH + "/brightness";
+std::string BACKLIGHT_BRIGHTNESS_MAX_NAME = BACKLIGHT_PATH + "/max_brightness";
 #define BACKLIGHT_BUFFER_SIZE 127
 
 std::weak_ptr<BrightnessControl> BrightnessControl::sInstance;
@@ -79,8 +79,8 @@ void BrightnessControl::setBrightness(int value)
 #error TODO: Not implemented for Windows yet!!!
 #endif
 
-    if (value < 1)
-        value = 1;
+    if (value < 0)
+        value = 0;
 
     if (value > 100)
         value = 100;
@@ -117,9 +117,6 @@ void BrightnessControl::setBrightness(int value)
         LOG(LogError) << "BrightnessControl::setBrightness failed";
     close(fd);
 
-    SystemConf::getInstance()->set("system.brightness", buffer);
-    SystemConf::getInstance()->saveSystemConf();
-
 }
 
 bool BrightnessControl::isAvailable()
@@ -127,6 +124,13 @@ bool BrightnessControl::isAvailable()
 #if WIN32
     return false;
 #else
-    return true;
+    int fd;
+    fd = open(BACKLIGHT_BRIGHTNESS_MAX_NAME.c_str(), O_RDONLY);
+    if (fd < 0) {
+        return false;
+    } else {
+        close(fd);
+        return true;
+    }
 #endif
 }

@@ -1170,7 +1170,7 @@ void GuiMenu::openSystemSettings_batocera()
 	{
 		// brightness
 		int brightness = BrightnessControl::getInstance()->getBrightness();
-		auto brightnessComponent = std::make_shared<SliderComponent>(mWindow, 1.f, 100.f, 1.f, "%");
+		auto brightnessComponent = std::make_shared<SliderComponent>(mWindow, 0.f, 100.f, 10.f, "%");
 		brightnessComponent->setValue(brightness);
 		brightnessComponent->setOnValueChanged([](const float &newVal) { BrightnessControl::getInstance()->setBrightness((int)Math::round(newVal)); });
 
@@ -1182,8 +1182,11 @@ void GuiMenu::openSystemSettings_batocera()
 		s->addSaveFunc([brightnessPopup]
 			{
 				bool old_value = Settings::getInstance()->getBool("BrightnessPopup");
+				int newBrightness = BrightnessControl::getInstance()->getBrightness();
 				if (old_value != brightnessPopup->getState())
 					Settings::getInstance()->setBool("BrightnessPopup", brightnessPopup->getState());
+					SystemConf::getInstance()->set("system.brightness", std::to_string(newBrightness / 10));
+					SystemConf::getInstance()->saveSystemConf();
 			}
 		);
 
@@ -1377,7 +1380,7 @@ void GuiMenu::openSystemSettings_batocera()
 
 
 	s->addGroup(_("HARDWARE / CPU"));
-	
+
 #if defined(AMD64)
         // Allow offlining all but n threads
 	auto optionsThreads = std::make_shared<OptionListComponent<std::string> >(mWindow, _("AVAILABLE THREADS"), false);
@@ -1439,43 +1442,73 @@ void GuiMenu::openSystemSettings_batocera()
 
 // Prep for additional device support.
 #if defined(AMD64)
-	// Provides overclock profile switching
-	auto deviceTDP = getenv("DEVICE_BASE_TDP");
-	auto optionsOCProfile = std::make_shared<OptionListComponent<std::string> >(mWindow, _("CPU TDP Max (AMD Only)"), false);
-	std::string selectedOCProfile = SystemConf::getInstance()->get("system.overclock");
-	if (selectedOCProfile.empty() || selectedOCProfile == deviceTDP)
-		selectedOCProfile = "default";
+        std::vector<std::string> cpuVendor = ApiSystem::getInstance()->getCPUVendor();
+	auto it = cpuVendor.begin();
 
-	if (deviceTDP) {
-		optionsOCProfile->add(_("DEVICE DEFAULT (") + deviceTDP + ")", "default", selectedOCProfile == "default");
-	} else {
-		optionsOCProfile->add(_("DEFAULT"), "default", selectedOCProfile == "default");
+        if (*it == "AuthenticAMD") {
+		// Provides overclock profile switching
+		auto deviceTDP = getenv("DEVICE_BASE_TDP");
+		auto optionsOCProfile = std::make_shared<OptionListComponent<std::string> >(mWindow, _("CPU TDP Max"), false);
+		std::string selectedOCProfile = SystemConf::getInstance()->get("system.overclock");
+		if (selectedOCProfile.empty() || selectedOCProfile == deviceTDP)
+			selectedOCProfile = "default";
+
+		if (deviceTDP) {
+			optionsOCProfile->add(_("DEVICE DEFAULT (") + deviceTDP + ")", "default", selectedOCProfile == "default");
+		} else {
+			optionsOCProfile->add(_("DEFAULT"), "default", selectedOCProfile == "default");
+		}
+
+	        optionsOCProfile->add(_("2.5W"),"2.5w", selectedOCProfile == "2.5w");
+	        optionsOCProfile->add(_("4.5W"),"4.5w", selectedOCProfile == "4.5w");
+	        optionsOCProfile->add(_("9W"),"9w", selectedOCProfile == "9w");
+	        optionsOCProfile->add(_("12W"),"12w", selectedOCProfile == "12w");
+	        optionsOCProfile->add(_("15W"),"15w", selectedOCProfile == "15w");
+	        optionsOCProfile->add(_("18W"),"18w", selectedOCProfile == "18w");
+	        optionsOCProfile->add(_("22W"),"22w", selectedOCProfile == "22w");
+	        optionsOCProfile->add(_("24W"),"24w", selectedOCProfile == "24w");
+	        optionsOCProfile->add(_("28W"),"28w", selectedOCProfile == "28w");
+	 	s->addWithLabel(_("CPU TDP Max"), optionsOCProfile);
+
+		s->addSaveFunc([this, optionsOCProfile, selectedOCProfile]
+		{
+			if (optionsOCProfile->changed()) {
+				mWindow->pushGui(new GuiMsgBox(mWindow, _("WARNING: OVERCLOCKING YOUR DEVICE MAY RESULT IN STABILITY PROBLEMS OR CAUSE HARDWARE DAMAGE!\n\nUSING THE QUIET COOLING PROFILE WHILE USING CERTAIN OVERCLOCKS MAY CAUSE PANIC REBOOTS!\n\nJELOS IS NOT RESPONSIBLE FOR ANY DAMAGE THAT MAY OCCUR USING THESE SETTINGS!\n\nCLICK YES THAT YOU AGREE, OR NO TO CANCEL."), _("YES"),
+	                                [this,optionsOCProfile] {
+						SystemConf::getInstance()->set("system.overclock", optionsOCProfile->getSelected());
+						SystemConf::getInstance()->saveSystemConf();
+						runSystemCommand("/usr/bin/overclock", "", nullptr);
+	                                }, _("NO"), nullptr));
+			}
+		});
 	}
 
-        optionsOCProfile->add(_("2.5W"),"2.5w", selectedOCProfile == "2.5w");
-        optionsOCProfile->add(_("4.5W"),"4.5w", selectedOCProfile == "4.5w");
-        optionsOCProfile->add(_("9W"),"9w", selectedOCProfile == "9w");
-        optionsOCProfile->add(_("12W"),"12w", selectedOCProfile == "12w");
-        optionsOCProfile->add(_("15W"),"15w", selectedOCProfile == "15w");
-        optionsOCProfile->add(_("18W"),"18w", selectedOCProfile == "18w");
-        optionsOCProfile->add(_("22W"),"22w", selectedOCProfile == "22w");
-        optionsOCProfile->add(_("24W"),"24w", selectedOCProfile == "24w");
-        optionsOCProfile->add(_("28W"),"28w", selectedOCProfile == "28w");
- 	s->addWithLabel(_("CPU TDP Max (AMD Only)"), optionsOCProfile);
+        if (*it == "GenuineIntel") {
+                // Provides EPP Profile switching
+                auto optionsEPP = std::make_shared<OptionListComponent<std::string> >(mWindow, _("CPU Energy Performance Preference"), false);
+                std::string selectedEPP = SystemConf::getInstance()->get("system.power.epp");
+                if (selectedEPP.empty())
+                        selectedEPP = "default";
 
-	s->addSaveFunc([this, optionsOCProfile, selectedOCProfile]
-	{
-		if (optionsOCProfile->changed()) {
-			mWindow->pushGui(new GuiMsgBox(mWindow, _("WARNING: OVERCLOCKING YOUR DEVICE MAY RESULT IN STABILITY PROBLEMS OR CAUSE HARDWARE DAMAGE!\n\nUSING THE QUIET COOLING PROFILE WHILE USING CERTAIN OVERCLOCKS MAY CAUSE PANIC REBOOTS!\n\nJELOS IS NOT RESPONSIBLE FOR ANY DAMAGE THAT MAY OCCUR USING THESE SETTINGS!\n\nCLICK YES THAT YOU AGREE, OR NO TO CANCEL."), _("YES"),
-                                [this,optionsOCProfile] {
-					SystemConf::getInstance()->set("system.overclock", optionsOCProfile->getSelected());
-					SystemConf::getInstance()->saveSystemConf();
-					runSystemCommand("/usr/bin/overclock", "", nullptr);
-                                }, _("NO"), nullptr));
-		}
-	});
+                optionsEPP->add(_("DEFAULT"), "default", selectedEPP == "default");
+
+                optionsEPP->add(_("Performance"),"performance", selectedEPP == "performance");
+                optionsEPP->add(_("Balance Performance"),"balance_performance", selectedEPP == "balance_performance");
+                optionsEPP->add(_("Balance Power Saving"),"balance_power", selectedEPP == "balance_power");
+                optionsEPP->add(_("Power Saving"),"power", selectedEPP == "power");
+
+                s->addWithLabel(_("CPU Energy Performance Preference"), optionsEPP);
+
+                s->addSaveFunc([this, optionsEPP, selectedEPP]
+                {
+                        if (optionsEPP->changed()) {
+                                SystemConf::getInstance()->set("system.power.epp", optionsEPP->getSelected());
+                                SystemConf::getInstance()->saveSystemConf();
+                                runSystemCommand("/usr/bin/set_epp " + optionsEPP->getSelected(), "", nullptr);
+                        }
+                });
+        }
 #endif
-
         // Default Scaling governor
 
         auto cpuGovUpdate = std::make_shared<OptionListComponent<std::string> >(mWindow, _("DEFAULT SCALING GOVERNOR"), false);
@@ -4128,7 +4161,7 @@ void GuiMenu::openSoundSettings()
 		s->addGroup(_("VOLUME"));
 
 		// volume
-		auto volume = std::make_shared<SliderComponent>(mWindow, 0.f, 100.f, 1.f, "%");
+		auto volume = std::make_shared<SliderComponent>(mWindow, 0.f, 100.f, 10.f, "%");
 		volume->setValue((float)VolumeControl::getInstance()->getVolume());
 		volume->setOnValueChanged([](const float &newVal) { VolumeControl::getInstance()->setVolume((int)Math::round(newVal)); });
 		s->addWithLabel(_("SYSTEM VOLUME"), volume);
@@ -4141,7 +4174,7 @@ void GuiMenu::openSoundSettings()
 		});
 
 		// preamp
-		auto preamp = std::make_shared<SliderComponent>(mWindow, 0.f, 100.f, 1.f, "%");
+		auto preamp = std::make_shared<SliderComponent>(mWindow, 1.f, 100.f, 1.f, "%");
 		preamp->setValue(std::stof(SystemConf::getInstance()->get("audio.preamp")));
 		preamp->setOnValueChanged([](const float &newVal) { SystemConf::getInstance()->set("audio.preamp", std::to_string((int)round(newVal))); });
 		s->addWithLabel(_("VOLUME PREAMP"), preamp);
@@ -5030,35 +5063,66 @@ void GuiMenu::popSpecificConfigurationGui(Window* mWindow, std::string title, st
 
 // Prep for additional device support.
 #if defined(AMD64)
-        // Provides overclock profile switching
-        auto optionsOCProfile = std::make_shared<OptionListComponent<std::string> >(mWindow, _("CPU TDP Max (AMD Only)"), false);
-        std::string selectedOCProfile = SystemConf::getInstance()->get(configName + ".overclock");
-        if (selectedOCProfile.empty())
-                selectedOCProfile = "default";
+        std::vector<std::string> cpuVendor = ApiSystem::getInstance()->getCPUVendor();
+        auto it = cpuVendor.begin();
 
-	optionsOCProfile->add(_("DEFAULT"), "default", selectedOCProfile == "default");
-        optionsOCProfile->add(_("2.5W"),"2.5w", selectedOCProfile == "2.5w");
-        optionsOCProfile->add(_("4.5W"),"4.5w", selectedOCProfile == "4.5w");
-        optionsOCProfile->add(_("9W"),"9w", selectedOCProfile == "9w");
-        optionsOCProfile->add(_("12W"),"12w", selectedOCProfile == "12w");
-        optionsOCProfile->add(_("15W"),"15w", selectedOCProfile == "15w");
-        optionsOCProfile->add(_("18W"),"18w", selectedOCProfile == "18w");
-        optionsOCProfile->add(_("22W"),"22w", selectedOCProfile == "22w");
-        optionsOCProfile->add(_("24W"),"24w", selectedOCProfile == "24w");
-        optionsOCProfile->add(_("28W"),"28w", selectedOCProfile == "28w");
+        if (*it == "AuthenticAMD") {
+	        // Provides overclock profile switching
+	        auto optionsOCProfile = std::make_shared<OptionListComponent<std::string> >(mWindow, _("CPU TDP Max"), false);
+	        std::string selectedOCProfile = SystemConf::getInstance()->get(configName + ".overclock");
+	        if (selectedOCProfile.empty())
+	                selectedOCProfile = "default";
 
-        systemConfiguration->addWithLabel(_("CPU TDP Max (AMD Only)"), optionsOCProfile);
+		optionsOCProfile->add(_("DEFAULT"), "default", selectedOCProfile == "default");
+	        optionsOCProfile->add(_("2.5W"),"2.5w", selectedOCProfile == "2.5w");
+	        optionsOCProfile->add(_("4.5W"),"4.5w", selectedOCProfile == "4.5w");
+	        optionsOCProfile->add(_("9W"),"9w", selectedOCProfile == "9w");
+	        optionsOCProfile->add(_("12W"),"12w", selectedOCProfile == "12w");
+	        optionsOCProfile->add(_("15W"),"15w", selectedOCProfile == "15w");
+	        optionsOCProfile->add(_("18W"),"18w", selectedOCProfile == "18w");
+	        optionsOCProfile->add(_("22W"),"22w", selectedOCProfile == "22w");
+	        optionsOCProfile->add(_("24W"),"24w", selectedOCProfile == "24w");
+	        optionsOCProfile->add(_("28W"),"28w", selectedOCProfile == "28w");
 
-        systemConfiguration->addSaveFunc([optionsOCProfile, selectedOCProfile, configName, mWindow]
-        {
-                if (optionsOCProfile->changed()) {
-                        mWindow->pushGui(new GuiMsgBox(mWindow, _("WARNING: OVERCLOCKING YOUR DEVICE MAY RESULT IN STABILITY PROBLEMS OR CAUSE HARDWARE DAMAGE!\n\nUSING THE QUIET COOLING PROFILE WHILE USING CERTAIN OVERCLOCKS MAY CAUSE PANIC REBOOTS!\n\nJELOS IS NOT RESPONSIBLE FOR ANY DAMAGE THAT MAY OCCUR USING THESE SETTINGS!\n\nCLICK YES THAT YOU AGREE, OR NO TO CANCEL."), _("YES"),
-			[optionsOCProfile,configName] {
-                                SystemConf::getInstance()->set(configName + ".overclock", optionsOCProfile->getSelected());
+	        systemConfiguration->addWithLabel(_("CPU TDP Max"), optionsOCProfile);
+
+	        systemConfiguration->addSaveFunc([optionsOCProfile, selectedOCProfile, configName, mWindow]
+	        {
+	                if (optionsOCProfile->changed()) {
+	                        mWindow->pushGui(new GuiMsgBox(mWindow, _("WARNING: OVERCLOCKING YOUR DEVICE MAY RESULT IN STABILITY PROBLEMS OR CAUSE HARDWARE DAMAGE!\n\nUSING THE QUIET COOLING PROFILE WHILE USING CERTAIN OVERCLOCKS MAY CAUSE PANIC REBOOTS!\n\nJELOS IS NOT RESPONSIBLE FOR ANY DAMAGE THAT MAY OCCUR USING THESE SETTINGS!\n\nCLICK YES THAT YOU AGREE, OR NO TO CANCEL."), _("YES"),
+				[optionsOCProfile,configName] {
+	                                SystemConf::getInstance()->set(configName + ".overclock", optionsOCProfile->getSelected());
+	                                SystemConf::getInstance()->saveSystemConf();
+	                        }, _("NO"), nullptr));
+	                }
+	        });
+	}
+
+        if (*it == "GenuineIntel") {
+                // Provides EPP Profile switching
+                auto optionsEPP = std::make_shared<OptionListComponent<std::string> >(mWindow, _("CPU Energy Performance Preference"), false);
+                std::string selectedEPP = SystemConf::getInstance()->get(configName + ".power.epp");
+                if (selectedEPP.empty())
+                        selectedEPP = "default";
+
+                optionsEPP->add(_("DEFAULT"), "default", selectedEPP == "default");
+
+                optionsEPP->add(_("Performance"),"performance", selectedEPP == "performance");
+                optionsEPP->add(_("Balance Performance"),"balance_performance", selectedEPP == "balance_performance");
+                optionsEPP->add(_("Balance Power Saving"),"balance_power", selectedEPP == "balance_power");
+                optionsEPP->add(_("Power Saving"),"power", selectedEPP == "power");
+
+                systemConfiguration->addWithLabel(_("CPU Energy Performance Preference"), optionsEPP);
+
+                systemConfiguration->addSaveFunc([optionsEPP, selectedEPP, configName]
+                {
+                        if (optionsEPP->changed()) {
+                                SystemConf::getInstance()->set(configName + ".power.epp", optionsEPP->getSelected());
                                 SystemConf::getInstance()->saveSystemConf();
-                        }, _("NO"), nullptr));
-                }
-        });
+                        }
+                });
+        }
+
 #endif
 
         // Per game/core/emu CPU governor
