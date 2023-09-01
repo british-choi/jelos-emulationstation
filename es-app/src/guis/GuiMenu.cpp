@@ -924,6 +924,13 @@ void GuiMenu::openSystemInformations_batocera()
 
 	window->pushGui(informationsGui);
 }
+
+void GuiMenu::openChangeLog()
+{
+	runSystemCommand("system-upgrade changelog", "", nullptr);
+	runSystemCommand("show_changelog", "", nullptr);
+}
+
 void GuiMenu::openDecorationConfiguration(Window *mWindow, std::string configName, std::vector<DecorationSetInfo> sets)
 {
 	//Using a shared pointer to ensure the memory doesn't cause issues in the other class
@@ -1405,7 +1412,7 @@ void GuiMenu::openSystemSettings_batocera()
 	                                [this,optionsOCProfile] {
 						SystemConf::getInstance()->set("system.overclock", optionsOCProfile->getSelected());
 						SystemConf::getInstance()->saveSystemConf();
-						runSystemCommand("/usr/bin/overclock", "", nullptr);
+						runSystemCommand("/usr/bin/overclock " + optionsOCProfile->getSelected(), "", nullptr);
 	                                }, _("NO"), nullptr));
 			}
 		});
@@ -1623,7 +1630,7 @@ void GuiMenu::openSystemSettings_batocera()
         if (selectedBranch.empty())
                 selectedBranch = "stable";
 
-        optionsUpdates->add(_("STABLE"), "stable", selectedBranch == "stable");
+        optionsUpdates->add(_("RELEASE"), "stable", selectedBranch == "stable");
 //        optionsUpdates->add(_("DEVELOPMENT"), "dev", selectedBranch == "dev");
 
         s->addWithLabel(_("UPDATE BRANCH"), optionsUpdates);
@@ -1650,6 +1657,8 @@ void GuiMenu::openSystemSettings_batocera()
         {
                 SystemConf::getInstance()->setBool("updates.enabled", updates_enabled->getState());
         });
+
+        s->addEntry(_("CHANGE LOG"), true, [this] { openChangeLog(); });
 
                 // Start update
         s->addEntry(GuiUpdate::state == GuiUpdateState::State::UPDATE_READY ? _("APPLY UPDATE") : _("START UPDATE"), true, [this]
@@ -2335,6 +2344,13 @@ void GuiMenu::openGamesSettings_batocera()
 	s->addWithLabel(_("INTEGER SCALING (PIXEL PERFECT)"), integerscale_enabled);
 	s->addSaveFunc([integerscale_enabled] { SystemConf::getInstance()->set("global.integerscale", integerscale_enabled->getSelected()); });
 
+#if defined(RK3588)  || defined(RK3399) || defined(RK3566) || defined(RK3326)
+	// RGA scale
+	auto rgascale_enabled = std::make_shared<OptionListComponent<std::string>>(mWindow, _("RGA SCALE"));
+	rgascale_enabled->addRange({ { _("DEFAULT"), "default" },{ _("ON") , "1" },{ _("OFF") , "0" } }, SystemConf::getInstance()->get("global.rgascale"));
+	s->addWithLabel(_("RGA SCALE"), rgascale_enabled);
+	s->addSaveFunc([rgascale_enabled] { SystemConf::getInstance()->set("global.rgascale", rgascale_enabled->getSelected()); });
+#endif
 	// autosave/load
 	auto autosave_enabled = std::make_shared<OptionListComponent<std::string>>(mWindow, _("AUTO SAVE/LOAD ON GAME LAUNCH"));
 	autosave_enabled->addRange({ { _("OFF"), "default" },{ _("ON") , "1" },{ _("SHOW SAVE STATES") , "2" },{ _("SHOW SAVE STATES IF NOT EMPTY") , "3" } }, SystemConf::getInstance()->get("global.autosave"));
@@ -4968,6 +4984,20 @@ void GuiMenu::popSpecificConfigurationGui(Window* mWindow, std::string title, st
 		systemConfiguration->addWithLabel(_("INTEGER SCALING (PIXEL PERFECT)"), integerscale_enabled);
 		systemConfiguration->addSaveFunc([integerscale_enabled, configName] { SystemConf::getInstance()->set(configName + ".integerscale", integerscale_enabled->getSelected()); });
 	}
+
+#if defined(RK3588)  || defined(RK3399) || defined(RK3566) || defined(RK3326)
+	// RGA scale
+	if (systemData->isFeatureSupported(currentEmulator, currentCore, EmulatorFeatures::pixel_perfect))
+	{
+		auto rgascale_enabled = std::make_shared<OptionListComponent<std::string>>(mWindow, _("RGA SCALE"));
+		rgascale_enabled->add(_("DEFAULT"), "default", SystemConf::getInstance()->get(configName + ".rgascale") != "0" && SystemConf::getInstance()->get(configName + ".rgascale") != "1");
+		rgascale_enabled->add(_("ON"), "1", SystemConf::getInstance()->get(configName + ".rgascale") == "1");
+		rgascale_enabled->add(_("OFF"), "0", SystemConf::getInstance()->get(configName + ".rgascale") == "0");
+		systemConfiguration->addWithLabel(_("RGA SCALE"), rgascale_enabled);
+		systemConfiguration->addSaveFunc([rgascale_enabled, configName] { SystemConf::getInstance()->set(configName + ".rgascale", rgascale_enabled->getSelected()); });
+	}
+#endif
+
 #ifdef _ENABLEEMUELEC
 	// bezel
 	/*
@@ -5144,7 +5174,7 @@ void GuiMenu::popSpecificConfigurationGui(Window* mWindow, std::string title, st
                   gpu_performance = "default";
 
           gpuPerformance->add(_("DEFAULT"), "default", gpu_performance == "default");
-          gpuPerformance->add(_("AUTO"), "default", gpu_performance == "auto");
+          gpuPerformance->add(_("AUTO"), "auto", gpu_performance == "auto");
           gpuPerformance->add(_("LOW"), "low", gpu_performance == "low");
           gpuPerformance->add(_("STANDARD"), "profile_standard", gpu_performance == "profile_standard");
           gpuPerformance->add(_("PEAK"), "profile_peak", gpu_performance == "profile_peak");
